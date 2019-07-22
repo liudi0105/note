@@ -1,8 +1,8 @@
-# JS中的 this, constructor, prototype
+# JavaScript 中的 this, constructor, prototype
 
-## `constructor`
+## constructor
 
-对象的 `constructor` 属性，指向该对象的构造函数。实例对象自身没有 `constructor` 属性，该属性继承自其原型对象。原型对象的 `constructor` 指向其对应的构造函数。  
+对象的 constructor 属性，指向该对象的构造函数。实例对象自身没有 constructor 属性，该属性继承自其原型对象。原型对象的 constructor 指向其对应的构造函数。  
 先来看一段代码：
 
 ```js
@@ -15,7 +15,7 @@ console.log(A.constructor);  // [Function: Function]
 
 所有函数的 `constructor` 属性指向 `Function` ，包括 `Function` 自身。
 
-*`prototype`*：函数的 `prototype` 属性，指向该函数作为构造函数时所创建的对象的原型对象，除了 `Function.prototype.bind()`，其他函数都有 `prototype` 属性。
+*prototype*：函数的 prototype 属性，指向该函数作为构造函数时所创建的对象的原型对象，除了 `Function.prototype.bind()`，其他函数都有 prototype 属性。
 
 ```js
 console.log(a.prototype);  // undefined
@@ -23,12 +23,12 @@ console.log(A.prototype);  // A {}
 console.log(A.prototype.constructor === A);  // true
 ```
 
-函数 `A` 在被创建时会添加一个 `prototype` 属性对象（我们叫作 `P`），`P` 的 `constructor` 属性指向 `A`。也就是说，一个构造函数对应一个原型对象，反过来也成立，他们内部维护着对方的一个引用。
+函数 A 在被创建时会添加一个 prototype 属性对象（我们叫作 P），P 的 constructor 属性指向 A。也就是说，一个构造函数对应一个原型对象，反过来也成立，他们内部维护着对方的一个引用。
 ___
 
-## `__proto__`
+## __proto__
 
-对象的 `__proto__` 属性，指向对象的原型对象
+对象的 __proto__ 属性，指向对象的原型对象
 
 ```js
   const b = Object.create(a);
@@ -37,12 +37,12 @@ ___
   console.log(a.__proto__ === A.prototype);  // true
 ```
 
-__构造函数所创建的对象，继承构造函数对应原型对象的属性（变量和方法）__，这是 JS 中属性继承的方式，构造函数在创建一个实例对象时，会为该对象创建一个 `__proto__` 属性对象，该属性指向构造函数的 `prototype` 属性对象。`__proto__` 并非ECMAScript标准，主流的浏览器为了完善原型链模式增加此属性，因此不建议在代码中使用此属性，可使用 `Object.getProtoTypeOf()` 和 `Object.setPrototypeOf()` 替代。
+__构造函数所创建的对象，继承构造函数对应原型对象的属性（变量和方法）__，这是 JS 中属性继承的方式，构造函数在创建一个实例对象时，会为该对象创建一个 __proto__ 属性对象，该属性指向构造函数的 prototype 属性对象。__proto__ 并非ECMAScript标准，主流的浏览器为了完善原型链模式增加此属性，因此不建议在代码中使用此属性，可使用 Object.getProtoTypeOf() 和 Object.setPrototypeOf() 替代。
 ___
 
-## `原型链`
+## 原型链
 
-由 `__proto__` 属性组成的链式结构被叫作原型链。
+由 __proto__ 属性组成的链式结构被叫作原型链。
 
 ```js
 function Obj() {this.a = 'propA'}
