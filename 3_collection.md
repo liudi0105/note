@@ -2,7 +2,7 @@
 
 ## Java基础
 
-### 1、List
+#### 1、List
 
 Java中的List接口有 `ArrayList`, `LinkedList`, `Vector`几种实现。
 
@@ -22,7 +22,7 @@ Vector和ArrayList在更多元素添加进来时会请求更大的空间。Vecto
 
 注意: 默认情况下ArrayList的初始容量非常小,所以如果可以预估数据量的话,分配一个较大的初始值属于最佳实践,这样可以减少调整大小的开销。
 
-### 2、Set是如何确保元素不重复的
+#### 2、Set是如何确保元素不重复的
 
 在Java的Set体系中，根据实现方式不同主要分为两大类。HashSet和TreeSet。
 
