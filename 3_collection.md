@@ -2,6 +2,8 @@
 
 ## Java基础
 
+### 集合
+
 #### 1、List
 
 Java中的List接口有 `ArrayList`, `LinkedList`, `Vector`几种实现。
