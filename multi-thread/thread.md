@@ -70,7 +70,7 @@ suspend 和sleep 其实本质是一样的，但是 suspend 之后还要认为的
 
 
 1. Java 中绿色线程和本地线程的区别？
-2. 线程和进程的区别？[答案](http://javarevisited.blogspot.sg/2015/12/difference-between-thread-and-process.html)
+2. 线程和进程的区别？
 3. 多线程的上下文切换是什么？
 4. 死锁和活锁的区别？死锁和饥饿的区别？
 5. Java 中使用什么线程调度算法？
@@ -82,4 +82,3 @@ suspend 和sleep 其实本质是一样的，但是 suspend 之后还要认为的
 11. 在 windows 和 linux 系统上分别如何找到占用 CPU 最多的线程？
 
 
-  
