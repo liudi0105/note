@@ -78,7 +78,7 @@ suspend 和sleep 其实本质是一样的，但是 suspend 之后还要认为的
 7. 线程中如何处理某个未处理异常？
 8. 什么是线程组？为什么 Java 中不建议使用线程组？
 9. 为什么使用 `Executor` 框架比直接创建线程要好？
-10. Java 中 `Executor` 和 `Executors` 的区别？[答案](http://javarevisited.blogspot.sg/2017/02/difference-between-executor-executorservice-and-executors-in-java.html)
+10. Java 中 `Executor` 和 `Executors` 的区别？
 11. 在 windows 和 linux 系统上分别如何找到占用 CPU 最多的线程？
 
 
