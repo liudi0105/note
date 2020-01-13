@@ -1,3 +1,9 @@
+---
+author: liudi
+createTime: 2020-01-13
+updateTime: 2020-01-13
+---
+
 #### 什么是 Redis？简述它的优缺点
 
 Redis 本质上是一个 key-value 类型的内存数据库，很像 memcached，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据持久化到硬盘上进行保存。

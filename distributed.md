@@ -1,3 +1,9 @@
+---
+author: liudi
+createTime: 2020-01-13
+updateTime: 2020-01-13
+---
+
 ### 分布式系统的定义
 
 #### 什么是分布式系统？
