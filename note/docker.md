@@ -4,7 +4,7 @@ createTime: 2020-01-13
 updateTime: 2020-01-13
 ---
 
-#### 常用命令
+# 常用命令
 
 ```bash
 sudo groupadd docker

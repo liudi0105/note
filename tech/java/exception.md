@@ -1,28 +1,6 @@
 # Java 中的异常处理机制
 
-#### Java 中的异常的分类
-
-##### Java异常类层次结构图
-
-```mermaid
-graph LR
-Throwable --> Error
-	Error --> VirtualMathineError
-		VirtualMathineError --> StackOverFlowError
-		VirtualMathineError --> OutOfMemoryError
-	Error --> AWTError
-Throwable --> Exception
-	Exception --> IOException
-		IOException --> EOFException
-		IOException --> FileNotFoundException
-	Exception --> RuntimeException
-		RuntimeException --> ArithmeticException
-		RuntimeException --> ClassNotFoundException
-		RuntimeException --> NullPointerException
-		RuntimeException --> IllegalArgumentException
-		RuntimeException --> ArrayIndexOutOfBoundException
-		RuntimeException --> UnknownTypeException
-```
+## Java 中的异常的分类
 
 - **运行时异常**：都是`RuntimeException`类及其子类异常，如`NullPointerException`(空指针异常)、`IndexOutOfBoundsException`(下标越界异常)等，这些异常是**不检查异常**，程序中可以选择捕获处理，也可以不处理。这些异常一般是**由程序逻辑错误引起**的，程序应该从逻辑角度尽可能避免这类异常的发生。
   运行时异常的特点是Java编译器不会检查它，也就是说，当程序中可能出现这类异常，即使没有用`try-catch`语句捕获它，也没有用`throws`子句声明抛出它，也会编译通过。
@@ -41,6 +19,6 @@ Throwable --> Exception
 - 不可查异常(编译器不要求强制处置的异常):包括运行时异常（`RuntimeException`与其子类）和错误（`Error`）。
 - `Exception` 这种异常分两大类运行时异常和非运行时异常(编译异常)。程序中应当尽可能去处理这些异常。
 
-#### 一个线程运行时发生异常会怎样？
+## 一个线程运行时发生异常会怎样？
 
 如果异常没有被捕获该线程将会停止执行。Thread.UncaughtExceptionHandler是用于处理未捕获异常造成线程突然中断情况的一个内嵌接口。当一个未捕获异常将造成线程中断的时候JVM会使用Thread.getUncaughtExceptionHandler()来查询线程的UncaughtExceptionHandler并将线程和异常作为参数传递给handler的uncaughtException()方法进行处理。

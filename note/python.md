@@ -4,7 +4,7 @@ createTime: 2020-01-13
 updateTime: 2020-01-13
 ---
 
-#### conda source list
+# conda source list
 
 ```
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ 

@@ -4,7 +4,7 @@ createTime: 2020-01-13
 updateTime: 2020-01-13
 ---
 
-#### CentOS 下 MySQL5.7 忘记密码
+# CentOS 下 MySQL5.7 忘记密码
 
 ```
 [root@localhost ~]# vi /etc/my.cnf
@@ -14,7 +14,7 @@ mysql>update mysql.user set authentication_string=password('新密码') where us
 [root@localhost ~]# systemctl restart mysqld.service
 ```
 
-#### MySQL中文乱码
+# MySQL中文乱码
 
 ```
 vim /etc/my.ini

@@ -4,7 +4,7 @@ createTime: 2020-01-13
 updateTime: 2020-01-13
 ---
 
-#### Redis firewall setting
+# Redis firewall setting
 
 ```bash
 firewall-cmd --zone=public --add-port=6379/tcp --permanent
