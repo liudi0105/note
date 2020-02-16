@@ -4,7 +4,9 @@ createTime: 2020-01-13
 updateTime: 2020-01-13
 ---
 
-```
+# VIM 常用配置
+
+```vimrc
 set number
 set tabstop=4
 set softtabstop=4
@@ -12,7 +14,7 @@ set shiftwidth=4
 set expandtab
 set smarttab
 set nocursorline
-set nobackup 
+set nobackup
 set noerrorbells
 set showmatch
 set mouse=a
@@ -61,4 +63,3 @@ let g:airline#extensions#ale#enabled = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 ```
-

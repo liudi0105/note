@@ -4,7 +4,30 @@ createTime: 2020-01-13
 updateTime: 2020-01-13
 ---
 
-# CentOS 下 MySQL5.7 忘记密码
+# MySQL 问题解决办法
+
+## install MySQL for CentOS
+
+```bash
+wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+yum -y install mysql57-community-release-el7-10.noarch.rpm
+yum -y install mysql-community-server
+yum clean all
+yum makecache
+set global validate_password_policy=0;
+yum -y remove mysql57-community-release-el7-10.noarch
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'jack'@’10.10.50.127’ IDENTIFIED BY '654321' WITH GRANT OPTION;
+```
+
+## 修改 MySQL 密码
+
+```bash
+mysqld --skip-grant-tables
+update user set authentication_string = password('root'), password_expired = 'N', password_last_changed = now() where user = 'root';
+```
+
+## CentOS 下 MySQL5.7 忘记密码
 
 ```
 [root@localhost ~]# vi /etc/my.cnf
@@ -14,11 +37,10 @@ mysql>update mysql.user set authentication_string=password('新密码') where us
 [root@localhost ~]# systemctl restart mysqld.service
 ```
 
-# MySQL中文乱码
+## MySQL 中文乱码
 
-```
-vim /etc/my.ini
+```ini
+# vim /etc/my.ini
 [mysqld]
-character-set-server=utf8  collation-server=utf8_general_ci 
+character-set-server=utf8  collation-server=utf8_general_ci
 ```
-
