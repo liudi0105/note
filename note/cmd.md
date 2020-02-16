@@ -45,8 +45,6 @@ deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe m
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
 ```
 
-
-
 ## Git 常用设置
 
 ```bash
