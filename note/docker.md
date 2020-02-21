@@ -78,3 +78,14 @@ docker run hello-world
   "experimental": true
 }
 ```
+
+## Nginx Web 服务
+
+```bash
+docker run \
+--name webserver \
+-d -p 80:80 \
+-v /root/workspace/webserver/nginx.conf:/etc/nginx/nginx.conf \
+-v /root/workspace/react-demo/build:/usr/share/nginx/html \
+nginx
+```

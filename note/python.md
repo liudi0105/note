@@ -25,9 +25,18 @@ channels:   - https://mirrors.ustc.edu.cn/anaconda/pkgs/main/   - https://mirr
 山东理工大学：http://pypi.sdutlinux.org/ 
 豆瓣：http://pypi.douban.com/simple/
 
+linux
 ~/.pip/pip.conf
+
 [global]
 index-url = https://pypi.douban.com/simple/
 [install]
 trusted-host=pypi.douban.com
+
+windows
+~/pip.ini
+%APPDATA%/pip/pip.ini
+
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ```

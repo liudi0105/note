@@ -68,6 +68,8 @@ Docker 不是虚拟化方法，它依赖与实际实现基于容器的虚拟化�
 
 ## Dockerfile 中的命令 COPY 和 ADD 命令有什么区别
 
+## Dockerfile 中的 RUN 和 CMD 命令有什么区别
+
 ## Docker 镜像和层有什么区别
 
 镜像：Docker 镜像是由一系列只读层构建的
