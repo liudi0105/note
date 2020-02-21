@@ -6,12 +6,12 @@ char, boolean, byte, short, int, long, float, double
 
 ## Java 中基本类型的取值范围
 
-| 类型  | 最小值          | 最大值             |
-| ----- | :-------------- | ------------------ |
-| byte  | -2<sup>7</sup>  | 2<sup>7</sup> - 1  |
-| short | -2<sup>16</sup> | 2<sup>16</sup> - 1 |
-| int   | -2<sup>31</sup> | 2<sup>31</sup> - 1 |
-| long  | -2<sup>64</sup> | 2<sup>64</sup> - 1 |
+| 类型  | 最小值 | 最大值   |
+| ----- | :----- | -------- |
+| byte  | -2^7   | 2^7 - 1  |
+| short | -2^16  | 2^16 - 1 |
+| int   | -2^31  | 2^31 - 1 |
+| long  | -2^64  | 2^64 - 1 |
 
 ## Java 中的参数传递方式
 
@@ -34,13 +34,13 @@ char, boolean, byte, short, int, long, float, double
 Java 中共有有三种变量，分别是类变量、成员变量和局部变量。他们分别存放在 JVM 的方法区、堆内存和栈内存中。
 
 ```java
-    public class Variable {
-        private static int a;
-        private static b;
-        public void test(int c) {
-            int d;
-        }
+public class Variable {
+    private static int a;
+    private static b;
+    public void test(int c) {
+        int d;
     }
+}
 ```
 
 上面例子中，a 是类变量，b 是成员变量，c 和 d 是局部变量。
@@ -93,11 +93,11 @@ Java 中的整型主要包含 byte、short、int 和 long 这四种，表示的�
 上面说过了，整型中，每个类型都有一定的表示范围，但是，在程序中有些计算会导致超出表示范围，即溢出。如以下代码：
 
 ```java
-    int i = Integer.MAX_VALUE;
-    int j = Integer.MAX_VALUE;
+int i = Integer.MAX_VALUE;
+int j = Integer.MAX_VALUE;
 
-    int k = i + j;
-    System.out.println("i (" + i + ") + j (" + j + ") = k (" + k + ")");
+int k = i + j;
+System.out.println("i (" + i + ") + j (" + j + ") = k (" + k + ")");
 ```
 
 输出结果：i (2147483647) + j (2147483647) = k (-2)
@@ -142,7 +142,7 @@ Java 语言是一个面向对象的语言，但是 Java 中的基本数据类型
 在 Java SE5 之前，要进行装箱，可以通过以下代码：
 
 ```java
-    Integer i = new Integer(10);
+Integer i = new Integer(10);
 ```
 
 自动拆箱与自动装箱
@@ -153,8 +153,8 @@ Java 语言是一个面向对象的语言，但是 Java 中的基本数据类型
 自动拆箱：就是将包装类自动转换成对应的基本数据类型。
 
 ```java
-    Integer i =10;  //自动装箱
-    int b= i;  //自动拆箱
+Integer i =10;  //自动装箱
+int b= i;  //自动拆箱
 ```
 
 Integer i=10 可以替代 Integer i = new Integer(10);，这就是因为 Java 帮我们提供了自动装箱的功能，不需要开发者手动去 new 一个 Integer 对象。
@@ -165,19 +165,15 @@ Integer i=10 可以替代 Integer i = new Integer(10);，这就是因为 Java �
 我们有以下自动拆装箱的代码：
 
 ```java
-    public static  void main(String[]args){
-        Integer integer=1; //装箱
-        int i=integer; //拆箱
-    }
+Integer integer=1; //装箱
+int i=integer; //拆箱
 ```
 
 对以上代码进行反编译后可以得到以下代码：
 
 ```java
-    public static  void main(String[]args){
-        Integer integer=Integer.valueOf(1);
-        int i=integer.intValue();
-    }
+Integer integer=Integer.valueOf(1);
+int i=integer.intValue();
 ```
 
 从上面反编译后的代码可以看出，int 的自动装箱都是通过 Integer.valueOf()方法来实现的，Integer 的自动拆箱都是通过 integer.intValue 来实现的。如果读者感兴趣，可以试着将八种类型都反编译一遍 ，你会发现以下规律：
@@ -194,19 +190,19 @@ Integer i=10 可以替代 Integer i = new Integer(10);，这就是因为 Java �
 我们知道，Java 中的集合类只能接收对象类型，那么以下代码为什么会不报错呢？
 
 ```java
-    List<Integer> li = new ArrayList<>();
-    for (int i = 1; i < 50; i ++){
-        li.add(i);
-    }
+List<Integer> li = new ArrayList<>();
+for (int i = 1; i < 50; i ++){
+    li.add(i);
+}
 ```
 
 将上面代码进行反编译，可以得到以下代码：
 
 ```java
-    List<Integer> li = new ArrayList<>();
-    for (int i = 1; i < 50; i += 2){
-        li.add(Integer.valueOf(i));
-    }
+List<Integer> li = new ArrayList<>();
+for (int i = 1; i < 50; i += 2){
+    li.add(Integer.valueOf(i));
+}
 ```
 
 以上，我们可以得出结论，当我们把基本数据类型放入集合类中的时候，会进行自动装箱。
@@ -215,19 +211,19 @@ Integer i=10 可以替代 Integer i = new Integer(10);，这就是因为 Java �
 有没有人想过，当我们对 Integer 对象与基本类型进行大小比较的时候，实际上比较的是什么内容呢？看以下代码：
 
 ```java
-    Integer a=1;
-    System.out.println(a==1?"等于":"不等于");
-    Boolean bool=false;
-    System.out.println(bool?"真":"假");
+Integer a=1;
+System.out.println(a==1?"等于":"不等于");
+Boolean bool=false;
+System.out.println(bool?"真":"假");
 ```
 
 对以上代码进行反编译，得到以下代码：
 
 ```java
-    Integer a=1;
-    System.out.println(a.intValue()==1?"等于":"不等于");
-    Boolean bool=false;
-    System.out.println(bool.booleanValue?"真":"假");
+Integer a=1;
+System.out.println(a.intValue()==1?"等于":"不等于");
+Boolean bool=false;
+System.out.println(bool.booleanValue?"真":"假");
 ```
 
 可以看到，包装类与基本数据类型进行比较运算，是先将包装类进行拆箱成基本数据类型，然后进行比较的。
@@ -236,18 +232,18 @@ Integer i=10 可以替代 Integer i = new Integer(10);，这就是因为 Java �
 有没有人想过，当我们对 Integer 对象进行四则运算的时候，是如何进行的呢？看以下代码：
 
 ```java
-    Integer i = 10;
-    Integer j = 20;
+Integer i = 10;
+Integer j = 20;
 
-    System.out.println(i+j);
+System.out.println(i+j);
 ```
 
 反编译后代码如下：
 
 ```java
-    Integer i = Integer.valueOf(10);
-    Integer j = Integer.valueOf(20);
-    System.out.println(i.intValue() + j.intValue());
+Integer i = Integer.valueOf(10);
+Integer j = Integer.valueOf(20);
+System.out.println(i.intValue() + j.intValue());
 ```
 
 我们发现，两个包装类型之间的运算，会被自动拆箱成基本类型进行。
@@ -256,20 +252,20 @@ Integer i=10 可以替代 Integer i = new Integer(10);，这就是因为 Java �
 这是很多人不知道的一个场景，作者也是一次线上的血淋淋的 Bug 发生后才了解到的一种案例。看一个简单的三目运算符的代码：
 
 ```java
-    boolean flag = true;
-    Integer i = 0;
-    int j = 1;
-    int k = flag ? i : j;
+boolean flag = true;
+Integer i = 0;
+int j = 1;
+int k = flag ? i : j;
 ```
 
 很多人不知道，其实在 int k = flag ? i : j;这一行，会发生自动拆箱。反编译后代码如下：
 
 ```java
-    boolean flag = true;
-    Integer i = Integer.valueOf(0);
-    int j = 1;
-    int k = flag ? i.intValue() : j;
-    System.out.println(k);
+boolean flag = true;
+Integer i = Integer.valueOf(0);
+int j = 1;
+int k = flag ? i.intValue() : j;
+System.out.println(k);
 ```
 
 这其实是三目运算符的语法规范。当第二，第三位操作数分别为基本类型和对象时，其中的对象就会拆箱为基本类型进行操作。
@@ -280,37 +276,35 @@ Integer i=10 可以替代 Integer i = new Integer(10);，这就是因为 Java �
 这个比较容易理解，直接上代码了：
 
 ```java
-    //自动拆箱
-    public int getNum1(Integer num) {
-     return num;
-    }
-    //自动装箱
-    public Integer getNum2(int num) {
-     return num;
-    }
+//自动拆箱
+public int getNum1(Integer num) {
+    return num;
+}
+//自动装箱
+public Integer getNum2(int num) {
+    return num;
+}
 ```
 
 自动拆装箱与缓存
 Java SE 的自动拆装箱还提供了一个和缓存有关的功能，我们先来看以下代码，猜测一下输出结果：
 
 ```java
-public static void main(String... strings) {
+Integer integer1 = 3;
+Integer integer2 = 3;
 
-    Integer integer1 = 3;
-    Integer integer2 = 3;
+if (integer1 == integer2)
+    System.out.println("integer1 == integer2");
+else
+    System.out.println("integer1 != integer2");
 
-    if (integer1 == integer2)
-        System.out.println("integer1 == integer2");
-    else
-        System.out.println("integer1 != integer2");
+Integer integer3 = 300;
+Integer integer4 = 300;
 
-    Integer integer3 = 300;
-    Integer integer4 = 300;
-
-    if (integer3 == integer4)
-        System.out.println("integer3 == integer4");
-    else
-        System.out.println("integer3 != integer4");
+if (integer3 == integer4)
+    System.out.println("integer3 == integer4");
+else
+    System.out.println("integer3 != integer4");
 }
 ```
 
@@ -414,25 +408,25 @@ Integer b = Integer.valueOf(10); //under the hood
 
 ```java
 /**
-     * Returns an {@code Integer} instance representing the specified
-     * {@code int} value.  If a new {@code Integer} instance is not
-     * required, this method should generally be used in preference to
-     * the constructor {@link #Integer(int)}, as this method is likely
-     * to yield significantly better space and time performance by
-     * caching frequently requested values.
-     *
-     * This method will always cache values in the range -128 to 127,
-     * inclusive, and may cache other values outside of this range.
-     *
-     * @param  i an {@code int} value.
-     * @return an {@code Integer} instance representing {@code i}.
-     * @since  1.5
-     */
-    public static Integer valueOf(int i) {
-        if (i >= IntegerCache.low && i <= IntegerCache.high)
-            return IntegerCache.cache[i + (-IntegerCache.low)];
-        return new Integer(i);
-    }
+* Returns an {@code Integer} instance representing the specified
+* {@code int} value.  If a new {@code Integer} instance is not
+* required, this method should generally be used in preference to
+* the constructor {@link #Integer(int)}, as this method is likely
+* to yield significantly better space and time performance by
+* caching frequently requested values.
+*
+* This method will always cache values in the range -128 to 127,
+* inclusive, and may cache other values outside of this range.
+*
+* @param  i an {@code int} value.
+* @return an {@code Integer} instance representing {@code i}.
+* @since  1.5
+*/
+public static Integer valueOf(int i) {
+    if (i >= IntegerCache.low && i <= IntegerCache.high)
+        return IntegerCache.cache[i + (-IntegerCache.low)];
+    return new Integer(i);
+}
 ```
 
 在创建对象之前先从 IntegerCache.cache 中寻找。如果没找到才使用 new 新建对象。
@@ -442,50 +436,50 @@ Integer b = Integer.valueOf(10); //under the hood
 IntegerCache 是 Integer 类中定义的一个 private static 的内部类。接下来看看他的定义。
 
 ```java
-  /**
-     * Cache to support the object identity semantics of autoboxing for values between
-     * -128 and 127 (inclusive) as required by JLS.
-     *
-     * The cache is initialized on first usage.  The size of the cache
-     * may be controlled by the {@code -XX:AutoBoxCacheMax=} option.
-     * During VM initialization, java.lang.Integer.IntegerCache.high property
-     * may be set and saved in the private system properties in the
-     * sun.misc.VM class.
-     */
+/**
+    * Cache to support the object identity semantics of autoboxing for values between
+    * -128 and 127 (inclusive) as required by JLS.
+    *
+    * The cache is initialized on first usage.  The size of the cache
+    * may be controlled by the {@code -XX:AutoBoxCacheMax=} option.
+    * During VM initialization, java.lang.Integer.IntegerCache.high property
+    * may be set and saved in the private system properties in the
+    * sun.misc.VM class.
+    */
 
-    private static class IntegerCache {
-        static final int low = -128;
-        static final int high;
-        static final Integer cache[];
+private static class IntegerCache {
+    static final int low = -128;
+    static final int high;
+    static final Integer cache[];
 
-        static {
-            // high value may be configured by property
-            int h = 127;
-            String integerCacheHighPropValue =
-                sun.misc.VM.getSavedProperty("java.lang.Integer.IntegerCache.high");
-            if (integerCacheHighPropValue != null) {
-                try {
-                    int i = parseInt(integerCacheHighPropValue);
-                    i = Math.max(i, 127);
-                    // Maximum array size is Integer.MAX_VALUE
-                    h = Math.min(i, Integer.MAX_VALUE - (-low) -1);
-                } catch( NumberFormatException nfe) {
-                    // If the property cannot be parsed into an int, ignore it.
-                }
+    static {
+        // high value may be configured by property
+        int h = 127;
+        String integerCacheHighPropValue =
+            sun.misc.VM.getSavedProperty("java.lang.Integer.IntegerCache.high");
+        if (integerCacheHighPropValue != null) {
+            try {
+                int i = parseInt(integerCacheHighPropValue);
+                i = Math.max(i, 127);
+                // Maximum array size is Integer.MAX_VALUE
+                h = Math.min(i, Integer.MAX_VALUE - (-low) -1);
+            } catch( NumberFormatException nfe) {
+                // If the property cannot be parsed into an int, ignore it.
             }
-            high = h;
-
-            cache = new Integer[(high - low) + 1];
-            int j = low;
-            for(int k = 0; k < cache.length; k++)
-                cache[k] = new Integer(j++);
-
-            // range [-128, 127] must be interned (JLS7 5.1.7)
-            assert IntegerCache.high >= 127;
         }
+        high = h;
 
-        private IntegerCache() {}
+        cache = new Integer[(high - low) + 1];
+        int j = low;
+        for(int k = 0; k < cache.length; k++)
+            cache[k] = new Integer(j++);
+
+        // range [-128, 127] must be interned (JLS7 5.1.7)
+        assert IntegerCache.high >= 127;
     }
+
+    private IntegerCache() {}
+}
 ```
 
 其中的 javadoc 详细的说明了缓存支持-128 到 127 之间的自动装箱过程。最大值 127 可以通过-XX:AutoBoxCacheMax=size 修改。 缓存通过一个 for 循环实现。从低到高并创建尽可能多的整数并存储在一个整数数组中。这个缓存会在 Integer 类第一次被使用的时候被初始化出来。以后，就可以使用缓存中包含的实例对象，而不是创建一个新的实例(在自动装箱的情况下)。

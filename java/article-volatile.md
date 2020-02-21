@@ -73,11 +73,11 @@ volatile 操作不会像锁一样造成阻塞，因此，在能够安全使用 v
 
 ```java
 volatile boolean shutdownRequested;
- 
+
 ...
- 
+
 public void shutdown() { shutdownRequested = true; }
- 
+
 public void doWork() {
     while (!shutdownRequested) {
         // do stuff
@@ -100,7 +100,7 @@ public void doWork() {
 ```java
 public class UserManager {
     public volatile String lastUser;
- 
+
     public boolean authenticate(String user, String password) {
         boolean valid = passwordIsValid(user, password);
         if (valid) {
@@ -128,7 +128,7 @@ public class UserManager {
 ```java
 public class UserManager {
     public volatile String lastUser;
- 
+
     public boolean authenticate(String user, String password) {
         boolean valid = passwordIsValid(user, password);
         if (valid) {
@@ -157,19 +157,19 @@ public class Person {
     private volatile String firstName;
     private volatile String lastName;
     private volatile int age;
- 
+
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
     public int getAge() { return age; }
- 
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
- 
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
- 
+
     public void setAge(int age) {
         this.age = age;
     }
@@ -196,9 +196,9 @@ public class CheesyCounter {
     // Employs the cheap read-write lock trick
     // All mutative operations MUST be done with the 'this' lock held
     @GuardedBy("this") private volatile int value;
- 
+
     public int getValue() { return value; }
- 
+
     public synchronized int increment() {
         return value++;
     }

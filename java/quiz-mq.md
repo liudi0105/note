@@ -63,7 +63,3 @@ AMQP 提供了五种消息模型：
 - routing key 为一个句点号“. ”分隔的字符串（我们将被句点号“. ”分隔开的每一段独立的字符串称为一个单词），如“stock.usd.nyse”、“nyse.vmw”、“quick.orange.rabbit”
 - binding key 与 routing key 一样也是句点号“. ”分隔的字符串
 - binding key 中可以存在两种特殊字符“_”与“#”，用于做模糊匹配，其中“_”用于匹配一个单词，“#”用于匹配多个单词（可以是零个）
-
-## RabbitMQ
-
-###
