@@ -34,7 +34,7 @@ index-url = https://pypi.douban.com/simple/
 trusted-host=pypi.douban.com
 
 windows
-~/pip.ini
+~/pip/pip.ini
 %APPDATA%/pip/pip.ini
 
 [global]
