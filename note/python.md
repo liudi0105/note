@@ -7,7 +7,7 @@ updateTime: 2020-01-13
 # conda source list
 
 ```text
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ 
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 conda config --set show_channel_urls yes
 
 channels:   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ ssl_verify: true
@@ -22,7 +22,7 @@ channels:   - https://mirrors.ustc.edu.cn/anaconda/pkgs/main/   - https://mirr
 阿里云：http://mirrors.aliyun.com/pypi/simple/
 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
 华中理工大学：http://pypi.hustunique.com/
-山东理工大学：http://pypi.sdutlinux.org/ 
+山东理工大学：http://pypi.sdutlinux.org/
 豆瓣：http://pypi.douban.com/simple/
 
 linux
