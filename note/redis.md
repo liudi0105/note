@@ -1,9 +1,4 @@
 ---
-author: liudi
-createTime: 2020-01-13
-updateTime: 2020-01-13
----
-
 # Redis 常见问题
 
 ## Redis firewall setting

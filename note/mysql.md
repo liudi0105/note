@@ -1,9 +1,3 @@
----
-author: liudi
-createTime: 2020-01-13
-updateTime: 2020-01-13
----
-
 # MySQL 问题解决办法
 
 ## install MySQL for CentOS

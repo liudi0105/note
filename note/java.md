@@ -1,9 +1,3 @@
----
-author: liudi
-createTime: 2020-01-13
-updateTime: 2020-01-13
----
-
 # JAVA 常见问题
 
 ## maven install file

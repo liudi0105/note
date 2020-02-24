@@ -1,9 +1,3 @@
----
-author: liudi
-createTime: 2020-01-13
-updateTime: 2020-01-13
----
-
 # Redis
 
 ## 什么是 Redis？简述它的优缺点
