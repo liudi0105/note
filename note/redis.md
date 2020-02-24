@@ -1,4 +1,3 @@
----
 # Redis 常见问题
 
 ## Redis firewall setting

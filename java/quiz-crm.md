@@ -1,4 +1,4 @@
-# MyBatis
+# MyBatis相关知识点整理
 
 ## 什么是 Mybatis
 

@@ -8,4 +8,3 @@ channels:   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   - htt
 channels:   - https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main/   - https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/free/   - https://mirrors.sjtug.sjtu.edu.cn/anaconda/cloud/conda-forge/ ssl_verify: true
 channels:   - https://mirrors.ustc.edu.cn/anaconda/pkgs/main/   - https://mirrors.ustc.edu.cn/anaconda/pkgs/free/   - https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/ ssl_verify: true
 ```
-

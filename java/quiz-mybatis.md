@@ -1,4 +1,4 @@
-# MyBatis 常见面试题
+# MyBatis 相关知识点整理
 
 ## 什么是 MyBatis
 
