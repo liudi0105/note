@@ -1,4 +1,4 @@
-# RabbitMQ知识点整理
+# RabbitMQ 知识点整理
 
 ## 简介
 

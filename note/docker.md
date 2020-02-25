@@ -1,6 +1,6 @@
 # 常用命令
 
-```bash
+```java
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 sudo service docker restart

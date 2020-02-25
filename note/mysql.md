@@ -1,4 +1,4 @@
-# MySQL 问题解决办法
+# MySQL 常见问题的解决办法
 
 ## install MySQL for CentOS
 
