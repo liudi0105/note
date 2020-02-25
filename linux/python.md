@@ -1,4 +1,4 @@
-#### conda source list
+# conda source list
 
 ```
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ 
