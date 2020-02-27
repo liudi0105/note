@@ -26,7 +26,7 @@ export PS1="\[\e]0;\u@\h:\w\a\]\[\033[37;45m\]\u@\h\[\033[35;46m\]\[\033[01;3
 
 ## aliyun apt source list for ubuntu
 
-```text
+```
 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse

@@ -53,6 +53,17 @@ sudo service docker start
 docker run hello-world
 ```
 
+## CentOS 下安装 Docker
+
+```bash
+# 安装基础的工具yum-utils device-mapper-persistent-data lvm2
+yum install -y yum-utils device-mapper-persistent-data lvm2
+# 添加docker-ce yum仓库
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+# 安装docker-ce
+yum install docker-ce
+```
+
 ## 更换国内源
 
 `/etc/docker/daemon.json`
@@ -60,9 +71,9 @@ docker run hello-world
 ```json
 {
   "registry-mirrors": [
+    ["http://hub-mirror.c.163.com"],
     "http://registry.docker-cn.com",
     "http://docker.mirrors.ustc.edu.cn",
-    "http://hub-mirror.c.163.com"
   ],
   "insecure-registries": [
     "registry.docker-cn.com",
@@ -83,3 +94,44 @@ docker run \
 -v /root/workspace/react-demo/build:/usr/share/nginx/html \
 nginx
 ```
+
+## Gitlab
+
+docker run --detach \
+ -p 8443:443 \
+ -p 80:80 \
+ -p 10022:22 \
+ --name gitlab \
+ --restart=unless-stopped \
+ --volume /var/lib/docker/volumes/gitlab-data/etc:/etc/gitlab \
+ --volume /var/lib/docker/volumes/gitlab-data/log:/var/log/gitlab \
+ --volume /var/lib/docker/volumes/gitlab-data/data:/var/opt/gitlab \
+ gitlab/gitlab-ce
+
+## 修改 gitlab.rb 配置文件
+
+\$ vim /var/lib/docker/volumes/gitlab-data/etc/gitlab.rb # 编辑 gitlab.rb 文件
+
+```rb
+## GitLab NGINX
+
+nginx['listen_port'] = 80 # gitlab nginx 端口。默认端口为：80
+
+## GitLab Unicorn
+
+unicorn['listen'] = 'localhost'
+unicorn['port'] = 8080 #默认是 8080 端口
+
+## GitLab URL 配置 http 协议所使用的访问地址
+
+external_url 'http://song.local' # clone 时显示的地址，gitlab 的域名
+
+# 配置 ssh 协议所使用的访问地址和端口
+
+gitlab_rails['gitlab_ssh_host'] = 'song.local'
+gitlab_rails['gitlab_shell_ssh_port'] = 10022
+```
+
+## Jenkins
+
+docker run -p 8008:8080 -v /var/lib/docker/volumes/jenkins:/var/jenkins_home --name jenkins -d jenkins

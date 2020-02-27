@@ -76,13 +76,13 @@ for dir in list(dirMap.keys()):
     dirname = os.path.join(rootdir, dir)
     dirs = os.listdir(dirname)
     files = [os.path.join(rootdir, dir, elem)
-             for elem in dirs if elem.endswith('.md')]
+             for elem in dirs if elem.endswith('.md') and not elem.startswith('quiz-')]
     for file in files:
         content = open(file, 'r', encoding='utf-8').readlines(20)
         metadata = getmeta(content)
         if metadata is None:
-          print(file)
-          continue
+            print(file)
+            continue
         metadata['category'] = 'tech:' + dir
         metadata['content'] = open(file, 'r', encoding='utf-8').read()
         save(data=metadata)
