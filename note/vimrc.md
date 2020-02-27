@@ -1,3 +1,6 @@
+# vim 配置
+
+```
 set number
 set tabstop=4
 set softtabstop=4
@@ -53,3 +56,4 @@ let g:ale_set_highlights = 0
 let g:airline#extensions#ale#enabled = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+```
