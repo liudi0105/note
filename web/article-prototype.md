@@ -27,7 +27,7 @@ console.log(A.prototype.constructor === A) // true
 
 ---
 
-## **proto**
+## proto
 
 对象的 **proto** 属性，指向对象的原型对象
 
