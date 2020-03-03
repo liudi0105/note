@@ -1,4 +1,4 @@
-# MyBatis相关知识点整理
+# MyBatis 相关知识点整理
 
 ## 什么是 Mybatis
 
@@ -8,7 +8,7 @@ MyBatis 可以使用 XML 或注解来配置和映射原生信息，将 POJO 映�
 
 通过 xml 文件或注解的方式将要执行的各种 statement 配置起来，并通过 java 对象和 statement 中 sql 的动态参数进行映射生成最终执行的 sql 语句，最后由 mybatis 框架执行 sql 并将结果映射为 java 对象并返回。（从执行 sql 到返回 result 的过程）。
 
-## Mybaits 的优点
+## Mybatis 的优点
 
 1. 基于 SQL 语句编程，相当灵活，不会对应用程序或者数据库的现有设计造成任何影响，SQL 写在 XML 里，解除 sql 与程序代码的耦合，便于统一管理；提供 XML 标签，支持编写动态 SQL 语句，并可重用。
 

@@ -110,8 +110,8 @@ TCP/IP 参考模型
   支持各种网络应用
   - FTP，SMTP，HTTP
 - 传输层  
-段（Segment）  
-  进程-进程的数据传输
+  段（Segment）  
+   进程-进程的数据传输
   - TCP，UDP
 - 网络层  
   数据报（Datagram）

@@ -1,14 +1,4 @@
-# 常用命令
-
-```java
-sudo groupadd docker
-sudo gpasswd -a $USER docker
-sudo service docker restart
-docker run --name bct-postgresql -e POSTGRES_USER=bct -e POSTGRES_PASSWORD=kEaLJ9ZERLLN -e POSTGRES_DB=bct -p 5432:5432 -d postgres:9-alpine -c max_connections=300
-docker run --name bct-redis -p 6379:6379 -d redis:alpine
-docker run -di --name=tensquare_rabbitmq -p 5671:5671 -p 5672:5672 -p 4369:4369 -p 15671:15671  -p 15672:15672 -p 25672:25672
-docker run --name swagger-ui -p 5005:8080 -d swaggerapi/swagger-ui -e SWAGGER_JSON=/foo/swagger.json
-```
+# Docker 常用命令
 
 ## windows_termianl_wsl2 --参考的对象类型不支持尝试的操作
 
@@ -73,7 +63,7 @@ yum install docker-ce
   "registry-mirrors": [
     ["http://hub-mirror.c.163.com"],
     "http://registry.docker-cn.com",
-    "http://docker.mirrors.ustc.edu.cn",
+    "http://docker.mirrors.ustc.edu.cn"
   ],
   "insecure-registries": [
     "registry.docker-cn.com",
@@ -97,6 +87,7 @@ nginx
 
 ## Gitlab
 
+```bash
 docker run --detach \
  -p 8443:443 \
  -p 80:80 \
@@ -107,10 +98,11 @@ docker run --detach \
  --volume /var/lib/docker/volumes/gitlab-data/log:/var/log/gitlab \
  --volume /var/lib/docker/volumes/gitlab-data/data:/var/opt/gitlab \
  gitlab/gitlab-ce
+```
 
 ## 修改 gitlab.rb 配置文件
 
-\$ vim /var/lib/docker/volumes/gitlab-data/etc/gitlab.rb # 编辑 gitlab.rb 文件
+/var/lib/docker/volumes/gitlab-data/etc/gitlab.rb
 
 ```rb
 ## GitLab NGINX
@@ -134,4 +126,6 @@ gitlab_rails['gitlab_shell_ssh_port'] = 10022
 
 ## Jenkins
 
+```bash
 docker run -p 8008:8080 -v /var/lib/docker/volumes/jenkins:/var/jenkins_home --name jenkins -d jenkins
+```
