@@ -1,4 +1,4 @@
-# Spring相关知识点整理
+# Spring 相关知识点整理
 
 ## Spring 基础
 
@@ -67,15 +67,10 @@ Spring 支持编程式事务管理和声明式事务管理两种方式：
 - PROPAGATION_REQUIRED：如果当前没有事务，就创建一个新事务，如果当前存在事务，就加入该事务，该设置是最常用的设置。
 
 - PROPAGATION_SUPPORTS：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就以非事务执行。
-
 - PROPAGATION_MANDATORY：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就抛出异常。
-
 - PROPAGATION_REQUIRES_NEW：创建新事务，无论当前存不存在事务，都创建新事务。
-
 - PROPAGATION_NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。
-
 - PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，则抛出异常。
-
 - PROPAGATION_NESTED：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则按 REQUIRED 属性执行。
 
   |                          | 当前没有事务 | 当前有事务 |
@@ -93,11 +88,8 @@ Spring 支持编程式事务管理和声明式事务管理两种方式：
 - ISOLATION_DEFAULT：这是个 PlatfromTransactionManager 默认的隔离级别，使用数据库默认的事务隔离级别。
 
 - ISOLATION_READ_UNCOMMITTED：读未提交，允许另外一个事务可以看到这个事务未提交的数据。
-
 - ISOLATION_READ_COMMITTED：读已提交，保证一个事务修改的数据提交后才能被另一事务读取，而且能看到该事务对已有记录的更新。
-
 - ISOLATION_REPEATABLE_READ：可重复读，保证一个事务修改的数据提交后才能被另一事务读取，但是不能看到该事务对已有记录的更新。
-
 - ISOLATION_SERIALIZABLE：一个事务在执行的过程中完全看不到其他事务对数据库所做的更新。
 
 ## Spring AOP
@@ -107,15 +99,10 @@ Spring 支持编程式事务管理和声明式事务管理两种方式：
 - 切面（Aspect）：被抽取的公共模块，可能会横切多个对象。 在 Spring AOP 中，切面可以使用通用类（基于模式的风格） 或者在普通类中以 @AspectJ 注解来实现。
 
 - 连接点（Join point）：指方法，在 Spring AOP 中，一个连接点 总是 代表一个方法的执行。
-
 - 通知（Advice）：在切面的某个特定的连接点（Join point）上执行的动作。通知有各种类型，其中包括“around”、“before”和“after”等通知。许多 AOP 框架，包括 Spring，都是以拦截器做通知模型， 并维护一个以连接点为中心的拦截器链。
-
 - 切入点（Pointcut）：切入点是指 我们要对哪些 Join point 进行拦截的定义。通过切入点表达式，指定拦截的方法，比如指定拦截 add*、search*。
-
 - 引入（Introduction）：（也被称为内部类型声明（inter-type declaration））。声明额外的方法或者某个类型的字段。Spring 允许引入新的接口（以及一个对应的实现）到任何被代理的对象。例如，你可以使用一个引入来使 bean 实现 IsModified 接口，以便简化缓存机制。
-
 - 目标对象（Target Object）： 被一个或者多个切面（aspect）所通知（advise）的对象。也有人把它叫做被通知（adviced）对象。 既然 Spring AOP 是通过运行时代理实现的，这个对象永远是一个 被代理（proxied）对象。
-
 - 织入（Weaving）：指把增强应用到目标对象来创建新的代理对象的过程。Spring 是在运行时完成织入。
 
 切入点（point cut）和连接点（join point）匹配的概念是 AOP 的关键，这使得 AOP 不同于其它仅仅提供拦截功能的旧技术。 切入点使得定位通知（advice）可独立于 OO 层次。 例如，一个提供声明式事务管理的 around 通知可以被应用到一组横跨多个对象中的方法上（例如服务层的所有业务操作）。
@@ -136,10 +123,14 @@ Spring 支持编程式事务管理和声明式事务管理两种方式：
 
 ### SpringMVC 的流程
 
-1. 用户发送请求至前端控制器 DispatcherServlet；
-2. DispatcherServlet 收到请求后，调用 HandlerMapping 处理器映射器，请求获取 Handle；
-3. 处理器映射器根据请求 url 找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给 DispatcherServlet；
-4. DispatcherServlet 调用 HandlerAdapter 处理器适配器；
+#### 1. 用户发送请求至前端控制器 DispatcherServlet
+
+#### 2. DispatcherServlet 收到请求后，在 HandlerMapping 中，通过 url 找到 Handler（也就是 Controller），然后返回给 DispatcherServlet
+
+#### handlerMapping 根据请求 url 找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给 DispatcherServlet
+
+#### DispatcherServlet 调用 HandlerAdapter 处理器适配器
+
 5. HandlerAdapter 经过适配调用 具体处理器(Handler，也叫后端控制器)；
 6. Handler 执行完成返回 ModelAndView；
 7. HandlerAdapter 将 Handler 执行结果 ModelAndView 返回给 DispatcherServlet；

@@ -8,7 +8,6 @@ dirMap = {
     "db": "数据库",
     "golang": "Go语言",
     "linux": "Linux",
-    "middleware": "中间件",
     "network": "网络",
     "note": "笔记",
     "devops": "运维",
@@ -53,8 +52,8 @@ def save(data=None):
 
 
 def article_fetch(url, data=None, method="post", params=None):
-    # return fetch('http://118.25.154.161:5000/article' + url, data=data, method=method, params=params)
-    return fetch('http://localhost:5000/article' + url, data=data, method=method, params=params)
+    return fetch('http://118.25.154.161:5000/article' + url, data=data, method=method, params=params)
+    # return fetch('http://localhost:5000/article' + url, data=data, method=method, params=params)
 
 
 def getmeta(content):

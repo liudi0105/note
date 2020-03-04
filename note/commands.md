@@ -91,14 +91,12 @@ channels:
 
 ## set python package source list
 
-```
-清华：https://pypi.tuna.tsinghua.edu.cn/simple
-阿里云：http://mirrors.aliyun.com/pypi/simple/
-中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
-华中理工大学：http://pypi.hustunique.com/
-山东理工大学：http://pypi.sdutlinux.org/
-豆瓣：http://pypi.douban.com/simple/
-```
+    清华：https://pypi.tuna.tsinghua.edu.cn/simple
+    阿里云：http://mirrors.aliyun.com/pypi/simple/
+    中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+    华中理工大学：http://pypi.hustunique.com/
+    山东理工大学：http://pypi.sdutlinux.org/
+    豆瓣：http://pypi.douban.com/simple/
 
 linux 下编辑 ~/.pip/pip.conf
 
@@ -153,4 +151,23 @@ update user set authentication_string = password('root'), password_expired = 'N'
 # vim /etc/my.ini
 [mysqld]
 character-set-server=utf8  collation-server=utf8_general_ci
+```
+
+### 从 Git 仓库中删除已被管理的文件
+
+```bash
+
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch "testFolder/2017-2-5 testFile.md" ' --prune-empty --tag-name-filter cat -- --all
+
+git push origin --force --all
+
+git push origin --force --tags
+
+git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
+
+git reflog expire --expire=now --all
+
+git gc --prune=now
+
+git count-objects -v
 ```
