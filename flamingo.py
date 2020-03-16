@@ -8,33 +8,27 @@ import sys
 rootdir = 'D:\\Workspace\\article'
 service_ip = '192.168.68.189'
 
-args = sys.argv[1:]
 
-print(args)
+def unsupport():
+    print('unsupported operation')
 
 
+def update(file):
+    print('update works!' + data)
 
-def update(data=None):
-    print()
 
-exit(0)
+def create(data):
+    return article_fetch('save', data)
 
-dirMap = {
-    "db": "数据库",
-    "golang": "Go语言",
-    "linux": "Linux",
-    "network": "网络",
-    "note": "笔记",
-    "devops": "运维",
-    "python": "Python",
-    "web": "前端",
-    "java": "Java"
-}
+
+def delete(data):
+    print('delete works!')
 
 
 def fetch(url, data=None, method="post", headers=None, params=None):
     print('url: ', url)
-    # print('params: ', json.dumps(data, ensure_ascii=False, sort_keys=True, indent=4))
+    params = json.dumps(data, ensure_ascii=False, sort_keys=True, indent=4)
+    print('params: ', params)
     if method.lower() == "get":
         resp = requests.get(url, headers=headers, params=params)
     else:
@@ -48,27 +42,12 @@ def fetch(url, data=None, method="post", headers=None, params=None):
 def checkdata(resp):
     resp_data = json.loads(resp.text)
     if resp_data["status"] != 0:
-        # raise Exception(resp_data)
         return resp_data
     return resp_data["data"]
 
 
-def save(data=None):
-    if data is None:
-        data = {
-            "code": "code",
-            "title": "标题",
-            "authorCode": "作者",
-            "abstract": "摘要",
-            "content": "### 这是一个标题",
-            "category": "tech",
-        }
-    return article_fetch('/save', data)
-
-
 def article_fetch(url, data=None, method="post", params=None):
-    return fetch('http://' + service_ip + ':5000/article' + url, data=data, method=method, params=params)
-    # return fetch('http://localhost:5000/article' + url, data=data, method=method, params=params)
+    return fetch('http://' + service_ip + ':5000/article/' + url, data=data, method=method, params=params)
 
 
 def getmeta(content):
@@ -86,17 +65,21 @@ def getmeta(content):
             return {}
 
 
-for dir in list(dirMap.keys()):
-    dirname = os.path.join(rootdir, dir)
-    dirs = os.listdir(dirname)
-    files = [os.path.join(rootdir, dir, elem)
-             for elem in dirs if elem.endswith('.md') and not elem.startswith('quiz-')]
-    for file in files:
-        content = open(file, 'r', encoding='utf-8').readlines(20)
-        metadata = getmeta(content)
-        if metadata is None:
-            print(file)
-            continue
-        metadata['category'] = 'tech:' + dir
-        metadata['content'] = open(file, 'r', encoding='utf-8').read()
-        save(data=metadata)
+args = sys.argv[1:]
+
+if args[0] not in ['update', 'delete', 'create']:
+    print('当前仅支持 update, create, delete 操作')
+    exit()
+
+if not args[1].endswith('.md'):
+    print(args[1] + ' 不是一个 markdown 文件！')
+    exit()
+
+func = {
+    'update': update,
+    'delete': delete,
+    'create': create
+}.get(args[0], unsupport)(args[1])
+
+
+exit(0)
