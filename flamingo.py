@@ -1,8 +1,23 @@
+#!/usr/bin/env python
+
 import os
 import requests
 import json
+import sys
 
 rootdir = 'D:\\Workspace\\article'
+service_ip = '192.168.68.189'
+
+args = sys.argv[1:]
+
+print(args)
+
+
+
+def update(data=None):
+    print()
+
+exit(0)
 
 dirMap = {
     "db": "数据库",
@@ -52,7 +67,7 @@ def save(data=None):
 
 
 def article_fetch(url, data=None, method="post", params=None):
-    return fetch('http://118.25.154.161:5000/article' + url, data=data, method=method, params=params)
+    return fetch('http://' + service_ip + ':5000/article' + url, data=data, method=method, params=params)
     # return fetch('http://localhost:5000/article' + url, data=data, method=method, params=params)
 
 
