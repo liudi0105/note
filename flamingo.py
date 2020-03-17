@@ -21,9 +21,12 @@ categories = ['linux', 'java', 'js', 'python', 'devops', 'note']
 opts, args = getopt.getopt(
     sys.argv[1:], 'hc:a:u',  ['help', 'category=', 'author=', 'update'])
 
+#print(opts)
+#print(args)
+
 for opt, arg in opts:
     if opt in ('-h', '--help'):
-        print('flamingo.py -t linux -a rudy linux/bash.md\nflamingo.py -t linux -a rudy --update linux/bash.md')
+        print('flamingo.py -c linux -a rudy linux/bash.md\nflamingo.py -c linux -a rudy --update linux/bash.md')
         sys.exit()
     if opt in ('-c', '--category'):
         if arg not in categories:

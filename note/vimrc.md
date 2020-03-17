@@ -1,19 +1,19 @@
 # 我的 vim 配置
 
-```
-set number
-set tabstop=4
+```bash
+set number  # 显示第行号
+set tabstop=4  # 制表符为四格
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
-set nocursorline
-set nobackup
-set noerrorbells
+set nocursorline  # 当前行不进行高亮
+set nobackup  # 不生成备份文件
+set noerrorbells  # 禁止警告声
 set showmatch
-set mouse=a
-set enc=utf-8
-set hlsearch
+set mouse=a  # 可以鼠标操作
+set enc=utf-8  # 默认文件编码
+set hlsearch  # 高亮显示搜索结果
 "set scrolloff=5
 "set clipboard=unnamed
 set nocompatible
@@ -27,7 +27,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 filetype plugin indent on
 filetype on
-syntax on
+syntax on  # 语法高亮
 
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
