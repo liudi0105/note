@@ -1,4 +1,4 @@
-# vim 配置
+# 我的 vim 配置
 
 ```
 set number

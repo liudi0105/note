@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import getopt
 import os
 import requests
 import json
@@ -8,21 +8,61 @@ import sys
 rootdir = 'D:\\Workspace\\article'
 service_ip = '192.168.68.189'
 
+category = None
+title = None
+content = None
+author = None
+update = False
+abstract = None
+path = None
 
-def unsupport():
-    print('unsupported operation')
+categories = ['linux', 'java', 'js', 'python', 'devops', 'note']
 
+opts, args = getopt.getopt(
+    sys.argv[1:], 'hc:a:u',  ['help', 'category=', 'author=', 'update'])
 
-def update(file):
-    print('update works!' + data)
+for opt, arg in opts:
+    if opt in ('-h', '--help'):
+        print('flamingo.py -t linux -a rudy linux/bash.md\nflamingo.py -t linux -a rudy --update linux/bash.md')
+        sys.exit()
+    if opt in ('-c', '--category'):
+        if arg not in categories:
+            print('Error: 不支持的category(' + ','.join(categories) + '): ' + arg)
+            exit()
+        category = arg
+    if opt in ('-a', '--author'):
+        author = arg
+    if opt in ('-u', '--update'):
+        update = True
 
+if args.__len__() == 0:
+    print('Error: 请选择要操作的文件')
+    exit()
 
-def create(data):
-    return article_fetch('save', data)
+if args.__len__() > 1:
+    print('Error: 一次只能操作一个文件')
+    exit()
 
+if not args[0].endswith('.md'):
+    print('文件 ' + args[0] + ' 不是 Markdown 类型！')
+    exit()
 
-def delete(data):
-    print('delete works!')
+if category is None:
+    print('Error: 未指定文章所属类型')
+    exit()
+
+if author is None:
+    print('Error: 未指定作者')
+    exit()
+
+path = args[0].strip('./')
+file = open(args[0], encoding='utf-8')
+lines = file.readlines()
+firstline = lines[0]
+if not firstline.startswith('# '):
+    raise Exception('markdown 文件必须以一级标题开始')
+title = firstline[2:].strip('\n')
+content = ''.join(lines)
 
 
 def fetch(url, data=None, method="post", headers=None, params=None):
@@ -50,36 +90,16 @@ def article_fetch(url, data=None, method="post", params=None):
     return fetch('http://' + service_ip + ':5000/article/' + url, data=data, method=method, params=params)
 
 
-def getmeta(content):
-    count = 0
-    for line in content:
-        line = line.strip()
-        if line == '':
-            continue
-        if line.startswith('# '):
-            return {
-                'title': line.replace('# ', '')
-            }
-        count = count + 1
-        if count == 10:
-            return {}
+params = {
+    'title': title,
+    'authorCode': author,
+    'abstract': abstract,
+    'content': content,
+    'category': category,
+    'path': path
+}
 
-
-args = sys.argv[1:]
-
-if args[0] not in ['update', 'delete', 'create']:
-    print('当前仅支持 update, create, delete 操作')
-    exit()
-
-if not args[1].endswith('.md'):
-    print(args[1] + ' 不是一个 markdown 文件！')
-    exit()
-
-func = {
-    'update': update,
-    'delete': delete,
-    'create': create
-}.get(args[0], unsupport)(args[1])
-
-
-exit(0)
+if (update is True):
+    article_fetch('updateByPath', data=params)
+else:
+    article_fetch('save', data=params)
