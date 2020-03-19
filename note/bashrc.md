@@ -1,4 +1,4 @@
-# 我的 .bashrc 配置
+# 我的 .bashrc
 
 ```bash
 alias ls='ls --color=auto'
