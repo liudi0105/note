@@ -176,7 +176,13 @@ Java 中存在四种引用：强引用（Strong Reference），软引用（Soft 
 
 ### Serial 收集器
 
+Serial 收集器采用的是复制算法，适用于新生代的垃圾收集。垃圾收集时必须暂停所有工作线程，直到完成，这种现象称为 ”Stop The World“。
+
+HotSpot 在 Client 模式下默认的新生代收集器就是 Serial 垃圾收集器。由于是单线程收集，所以对于单个 CPU 环境，避免了切换的开销，效率更高
+
 ### ParNew 收集器
+
+ParNew 是 Serial 收集器的多线程版本。
 
 ### Parallel Scavenge 收集器
 
