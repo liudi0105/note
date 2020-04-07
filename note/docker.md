@@ -133,7 +133,7 @@ docker run -p 8008:8080 -v /var/lib/docker/volumes/jenkins:/var/jenkins_home --n
 ## MySQL
 
 ```bash
-docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7
+docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=TT4^*lDtqU05 -d mysql:5.7
 
 docker run -p 3306:3306 --name mysql \
   -v /usr/local/docker/mysql/conf:/etc/mysql \
