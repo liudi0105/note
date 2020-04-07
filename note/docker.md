@@ -133,7 +133,13 @@ docker run -p 8008:8080 -v /var/lib/docker/volumes/jenkins:/var/jenkins_home --n
 ## MySQL
 
 ```bash
-docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=TT4^*lDtqU05 -d mysql:5.7
+docker run \
+  -p 3306:3306 \
+  --name mysql \
+  -v /root/docker/mysql/conf:/etc/mysql \
+  -e MYSQL_ROOT_PASSWORD=TT4^*lDtqU05 \
+  -d \
+  mysql:5.7
 
 docker run -p 3306:3306 --name mysql \
   -v /usr/local/docker/mysql/conf:/etc/mysql \
@@ -141,4 +147,22 @@ docker run -p 3306:3306 --name mysql \
   -v /usr/local/docker/mysql/data:/var/lib/mysql \
   -e MYSQL_ROOT_PASSWORD=123456 \
   -d mysql:5.7
+```
+
+## Spring boot 项目 Dockerfile
+
+```dockerfile
+FROM centos:centos7
+MAINTAINER worktrans
+RUN mkdir /usr/local/jdk
+#WORKDIR /usr/local/jdk
+ADD jdk-8u241-linux-x64.tar.gz /usr/local/jdk
+
+ENV JAVA_HOME /usr/local/jdk/jdk1.8.0_241
+ENV JRE_HOME /usr/local/jdk/jdk1.8.0_241/jre
+ENV PATH $JAVA_HOME/bin:$PATH
+
+ARG JAR_FILE=worktrans-mes-registry-1.0.0-RELEASE-dev.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
 ```

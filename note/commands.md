@@ -167,6 +167,17 @@ git gc --prune=now
 git count-objects -v
 ```
 
+### Git 常用配置
+
+```bash
+git config --global core.filemode false
+git config --global --add core.filemode false
+git config --global alias.sub 'submodule foreach git'
+git config --global alias.s 'status'
+git config --global core.autocrlf input
+git config --global credential.helper store
+```
+
 ### Yarn 和 NPM 国内源
 
 ```bash
