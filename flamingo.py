@@ -6,7 +6,8 @@ import json
 import sys
 
 rootdir = 'D:\\Workspace\\article'
-service_ip = '192.168.68.189'
+#service_ip = '192.168.68.189'
+service_ip = '129.28.148.128'
 
 category = None
 title = None

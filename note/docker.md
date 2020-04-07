@@ -78,10 +78,10 @@ yum install docker-ce
 
 ```bash
 docker run \
---name mes-front \
--d -p 80:80 \
--v /root/workspace/webserver/nginx.conf:/etc/nginx/nginx.conf \
--v /root/workspace/worktrans-mes-front/dist:/usr/share/nginx/html \
+--name webserver \
+-d -p 3000:80 \
+-v /root/workspace/webserver/nginx-test.conf:/etc/nginx/nginx.conf \
+-v /root/workspace/test-web/dist:/usr/share/nginx/html \
 nginx:alpine
 ```
 
