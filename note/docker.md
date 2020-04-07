@@ -78,11 +78,11 @@ yum install docker-ce
 
 ```bash
 docker run \
---name webserver \
+--name mes-front \
 -d -p 80:80 \
 -v /root/workspace/webserver/nginx.conf:/etc/nginx/nginx.conf \
--v /root/workspace/react-demo/build:/usr/share/nginx/html \
-nginx
+-v /root/workspace/worktrans-mes-front/dist:/usr/share/nginx/html \
+nginx:alpine
 ```
 
 ## Gitlab
@@ -128,4 +128,17 @@ gitlab_rails['gitlab_shell_ssh_port'] = 10022
 
 ```bash
 docker run -p 8008:8080 -v /var/lib/docker/volumes/jenkins:/var/jenkins_home --name jenkins -d jenkins
+```
+
+## MySQL
+
+```bash
+docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7
+
+docker run -p 3306:3306 --name mysql \
+  -v /usr/local/docker/mysql/conf:/etc/mysql \
+  -v /usr/local/docker/mysql/logs:/var/log/mysql \
+  -v /usr/local/docker/mysql/data:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=123456 \
+  -d mysql:5.7
 ```
