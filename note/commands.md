@@ -1,4 +1,4 @@
-# Linux 下的常用命令
+# 常用命令速查
 
 ## 压缩/解压缩
 
@@ -165,4 +165,11 @@ git for-each-ref --format='delete %(refname)' refs/original | git update-ref --s
 git reflog expire --expire=now --all
 git gc --prune=now
 git count-objects -v
+```
+
+# yarn
+
+```bash
+yarn config  set global-folder "D:\Developer\.yarn\modules"
+yarn config set cache-folder "D:\Developer\.yarn\cache"
 ```
