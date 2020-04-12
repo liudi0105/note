@@ -204,3 +204,14 @@ nohup java -Xms512m -Xmx512m -jar "\${item}" >/dev/null 2>&1 &
 nohup java -jar "\${item}" >/dev/null 2>&1 &
 
 nohup java -jar --eureka.client.serviceUrl.defaultZone=http://192.168.20.80:8888/eureka/ worktrans-mes-gateway-1.0.0-RELEASE-dev.jar >/dev/null 2>&1 &
+
+### Powershell 进入 Emacs 模式
+
+```powershell
+
+# 进入 Emacs 模式
+Set-PSReadlineOption -EditMode Emacs
+
+# 允许执行 ps1 文件
+Set-ExecutionPolicy RemoteSigned
+```
